@@ -1,0 +1,7 @@
+IF
+Global("T#JSRainExists","AR8015",0)
+THEN
+RESPONSE #100
+SetGlobal("T#JSRainExists","AR8015",1)
+CreateCreature("T#JSRain",[480.220],3) 
+END
