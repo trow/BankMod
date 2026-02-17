@@ -10,52 +10,52 @@ SAY @3
 IF~~ THEN REPLY @4 GOTO Services
 END
 
-IF~TRUE()~ THEN BEGIN Services					//Ñ¡Ôñ·şÎñ
-SAY ~ÄãĞèÒª°ìÀíÊ²Ã´ÒµÎñ£¿¶Ò»»»ãÆ±¡¢Í¶×Ê»òÕß´û¿î£¿~
-IF~~THEN REPLY~ÎÒÒª¶Ò»»»ãÆ±~GOTO Transfer
+IF~TRUE()~ THEN BEGIN Services					//é€‰æ‹©æœåŠ¡
+SAY @12
+IF~~THEN REPLY @13 GOTO Transfer
 
 IF~Global("T#InvestedTrade","GLOBAL",0)
-	Global("T#InvestedMining","GLOBAL",0)~THEN REPLY~ÎÒÒª¿´¿´Í¶×Ê·şÎñ¡£~GOTO Investment	//Ä¿Ç°Ã»ÓĞÍ¶×Ê
+	Global("T#InvestedMining","GLOBAL",0)~THEN REPLY @11 GOTO Investment	//ç›®å‰æ²¡æœ‰æŠ•èµ„
 
 //IF~OR(2)Global("T#InvestedTrade","GLOBAL",1)
-//	Global("T#InvestedMining","GLOBAL",1)~THEN REPLY~ÎÒÒª¿´¿´Í¶×Ê·şÎñ¡£~GOTO Investmented	//Ä¿Ç°ÒÑ´æÔÚÒ»±ÊÍ¶×Ê
+//	Global("T#InvestedMining","GLOBAL",1)~THEN REPLY @11 GOTO Investmented	//ç›®å‰å·²å­˜åœ¨ä¸€ç¬”æŠ•èµ„
 
-IF~Global("T#InvestedTrade","GLOBAL",1)							//Î´µ½Ã³Ò×ÊÕÒæÊ±¼ä
-	!GlobalTimerExpired("T#TradeTimer","GLOBAL")~THEN REPLY~ÎÒÒªÁìÈ¡ÎÒµÄÍ¶×ÊÊÕÒæ¡£~ GOTO NoTradeEarnings
+IF~Global("T#InvestedTrade","GLOBAL",1)							//æœªåˆ°è´¸æ˜“æ”¶ç›Šæ—¶é—´
+	!GlobalTimerExpired("T#TradeTimer","GLOBAL")~THEN REPLY @11 GOTO NoTradeEarnings
 
-IF~Global("T#InvestedTrade","GLOBAL",1)							//µ½Ã³Ò×ÊÕÒæÊ±¼ä£¬ÓĞÊÕÒæ
+IF~Global("T#InvestedTrade","GLOBAL",1)							//åˆ°è´¸æ˜“æ”¶ç›Šæ—¶é—´ï¼Œæœ‰æ”¶ç›Š
 	GlobalTimerExpired("T#TradeTimer","GLOBAL")
-	Global("T#Invsucc1","AR0707",1)~THEN REPLY~ÎÒÒªÁìÈ¡ÎÒµÄÍ¶×ÊÊÕÒæ¡£~ GOTO TradeSuccesed
+	Global("T#Invsucc1","AR0707",1)~THEN REPLY @11 GOTO TradeSuccesed
 
-IF~Global("T#InvestedTrade","GLOBAL",1)							//µ½Ã³Ò×ÊÕÒæÊ±¼ä£¬ÎŞÊÕÒæ
+IF~Global("T#InvestedTrade","GLOBAL",1)							//åˆ°è´¸æ˜“æ”¶ç›Šæ—¶é—´ï¼Œæ— æ”¶ç›Š
 	GlobalTimerExpired("T#TradeTimer","GLOBAL")
-	Global("T#Invsucc1","AR0707",2)~THEN REPLY~ÎÒÒªÁìÈ¡ÎÒµÄÍ¶×ÊÊÕÒæ¡£~ GOTO TradeFailure
+	Global("T#Invsucc1","AR0707",2)~THEN REPLY @11 GOTO TradeFailure
 
-IF~Global("T#InvestedMining","GLOBAL",1)							//Î´µ½²É¿óÊÕÒæÊ±¼ä
-	!GlobalTimerExpired("T#MiningTimer","GLOBAL")~THEN REPLY~ÎÒÒªÁìÈ¡ÎÒµÄÍ¶×ÊÊÕÒæ¡£~ GOTO NoMiningEarnings
+IF~Global("T#InvestedMining","GLOBAL",1)							//æœªåˆ°é‡‡çŸ¿æ”¶ç›Šæ—¶é—´
+	!GlobalTimerExpired("T#MiningTimer","GLOBAL")~ THEN REPLY @11 GOTO NoMiningEarnings
 
-IF~Global("T#InvestedMining","GLOBAL",1)							//µ½²É¿óÊÕÒæÊ±¼ä£¬ÓĞÊÕÒæ
+IF~Global("T#InvestedMining","GLOBAL",1)							//åˆ°é‡‡çŸ¿æ”¶ç›Šæ—¶é—´ï¼Œæœ‰æ”¶ç›Š
 	GlobalTimerExpired("T#MiningTimer","GLOBAL")
-	Global("T#Invsucc2","AR0707",1)~THEN REPLY~ÎÒÒªÁìÈ¡ÎÒµÄÍ¶×ÊÊÕÒæ¡£~ GOTO MiningSuccesed
+	Global("T#Invsucc2","AR0707",1)~THEN REPLY @11 GOTO MiningSuccesed
 
-IF~Global("T#InvestedMining","GLOBAL",1)							//µ½²É¿óÊÕÒæÊ±¼ä£¬¶à±¦Ê¯
+IF~Global("T#InvestedMining","GLOBAL",1)							//åˆ°é‡‡çŸ¿æ”¶ç›Šæ—¶é—´ï¼Œå¤šå®çŸ³
 	GlobalTimerExpired("T#MiningTimer","GLOBAL")
-	Global("T#Invsucc2","AR0707",3)~THEN REPLY~ÎÒÒªÁìÈ¡ÎÒµÄÍ¶×ÊÊÕÒæ¡£~ GOTO MiningSuccesed1
+	Global("T#Invsucc2","AR0707",3)~THEN REPLY @11 GOTO MiningSuccesed1
 
-IF~Global("T#InvestedMining","GLOBAL",1)							//µ½²É¿óÊÕÒæÊ±¼ä£¬ÉÙ±¦Ê¯
+IF~Global("T#InvestedMining","GLOBAL",1)							//åˆ°é‡‡çŸ¿æ”¶ç›Šæ—¶é—´ï¼Œå°‘å®çŸ³
 	GlobalTimerExpired("T#MiningTimer","GLOBAL")
-	Global("T#Invsucc2","AR0707",4)~THEN REPLY~ÎÒÒªÁìÈ¡ÎÒµÄÍ¶×ÊÊÕÒæ¡£~ GOTO MiningSuccesed2
+	Global("T#Invsucc2","AR0707",4)~THEN REPLY @11 GOTO MiningSuccesed2
 
-IF~Global("T#InvestedMining","GLOBAL",1)							//µ½²É¿óÊÕÒæÊ±¼ä£¬ÎŞÊÕÒæ
+IF~Global("T#InvestedMining","GLOBAL",1)							//åˆ°é‡‡çŸ¿æ”¶ç›Šæ—¶é—´ï¼Œæ— æ”¶ç›Š
 	GlobalTimerExpired("T#MiningTimer","GLOBAL")
-	Global("T#Invsucc2","AR0707",2)~THEN REPLY~ÎÒÒªÁìÈ¡ÎÒµÄÍ¶×ÊÊÕÒæ¡£~ GOTO MiningFailure
+	Global("T#Invsucc2","AR0707",2)~THEN REPLY @11 GOTO MiningFailure
 
 
-IF~~THEN REPLY~ÎÒĞèÒª²éÑ¯´û¿î·şÎñ¡£~GOTO Loan
-IF~~THEN REPLY~¶¼²»ĞèÒª£¬Ö»ÊÇÂ·¹ı¡£~EXIT
+IF~~THEN REPLY @14 GOTO Loan
+IF~~THEN REPLY @15 EXIT
 END
 
-IF ~~ THEN BEGIN Transfer					//¶Ò»»»ãÆ±
+IF ~~ THEN BEGIN Transfer					//å…‘æ¢æ±‡ç¥¨
 SAY @5
 IF ~PartyHasItem("T#bkscrl")~
       THEN REPLY @6 DO ~TakePartyItemNum("T#bkscrl",1)
@@ -64,126 +64,126 @@ IF ~PartyHasItem("T#bkscrl")~
 IF~~ THEN REPLY @7 EXIT
 END
 
-IF~~THEN BEGIN TransferOver					//¶Ò»»Íê»ãÆ±
+IF~~THEN BEGIN TransferOver					//å…‘æ¢å®Œæ±‡ç¥¨
 SAY @8
 IF ~PartyHasItem("T#bkscrl")~
       THEN REPLY @9 GOTO Transfer
 IF ~~ THEN REPLY @10 EXIT
 END
 
-//Í¶×ÊÏà¹Ø
-	//½øĞĞÍ¶×Ê
-IF ~~ THEN BEGIN Investment			//Í¶×Ê
-SAY ~¿´À´ÄãÒ²ÊÇ¸öÓĞÇ®ÈË£¬ÓĞĞËÈ¤Í¶×ÊÃ´£¿~
-IF~~THEN REPLY~ºÃ°¡£¬ÈÃÎÒ¿´¿´ÓĞĞ©Ê²Ã´ÏîÄ¿ÖµµÃÍ¶×Ê¡£~GOTO InvestmentChoice1
-IF~~THEN REPLY~²»ÓÃ£¬Ğ»Ğ»¡£~EXIT
+//æŠ•èµ„ç›¸å…³
+	//è¿›è¡ŒæŠ•èµ„
+IF ~~ THEN BEGIN Investment			//æŠ•èµ„
+SAY @16
+IF~~THEN REPLY @17 GOTO InvestmentChoice1
+IF~~THEN REPLY @18 EXIT
 END
 
-IF ~~ THEN BEGIN Investmented			//Í¶×Ê
-SAY ~¶Ô²»Æğ£¬ÄãÄ¿Ç°ÒÑ¾­Í¶×Ê¹ıÒ»±ÊÉúÒâÁË£¬ÔÚÕâ±ÊÍ¶×Êµ½ÆÚÇ°Äã²»ÄÜ¼ÌĞøÍ¶×Ê¡£~
-IF~~THEN REPLY~ºÃµÄ£¬ÎÒÒÔºóÔÙÀ´¡£~EXIT
+IF ~~ THEN BEGIN Investmented			//æŠ•èµ„
+SAY @19
+IF~~THEN REPLY @20 EXIT
 END
 
-IF~~THEN BEGIN InvestmentChoice1				//Í¶×Ê½éÉÜ1Ã³Ò×
-SAY~Äã¿ÉÒÔÑ¡ÔñÍ¶×ÊÃ³Ò×£¬ÎÒÃÇÓĞÒ»Ö§´¬¶ÓÔËËÍ·À¾ßºÍÎäÆ÷µ½Ö³ÃñµØÂí×ÈÌá¿¨£¬²¢ÔË»Ø»Æ½ğ¡£ÕâÏîÍ¶×ÊÊ®·Ö»®Ëã£¬ÊÕÒæ¿ÉÒÔ´ïµ½°Ù·ÖÖ®ÎåÊ®£¬µ«ÊÇÈç¹ûÓöµ½º£ÄÑ¿ÉÄÜ»áÑª±¾ÎŞ¹é£¬ÅŞ£¬ÎÒËµÕâ¸ö¸ÉÂï£¬ÎŞÂÛÈçºÎÓöµ½º£ÄÑµÄ¼¸ÂÊ²»»áÌ«¸ßµÄ¡£Äã¶ÔÕâÏîÄ¿Í¶×ÊÓĞĞËÈ¤Âğ£¬Ò»´ÎĞÔĞèÒªÍ¶×Ê100000½ğ±Ò£¬10Ììºó¿ÉÒÔÁìÈ¡ÊÕÒæ¡£~
+IF~~THEN BEGIN InvestmentChoice1				//æŠ•èµ„ä»‹ç»1è´¸æ˜“
+SAY @21
 IF~~THEN GOTO InvestmentChoice2
 END
 
-IF~~THEN BEGIN InvestmentChoice2				//Í¶×Ê½éÉÜ2¿ª¿ó
-SAY~Äã»¹¿ÉÒÔÑ¡ÔñÍ¶×Ê²É¿ó£¬¾ŞÄ§É½ÇøËäÈ»³äÂúÎ£ÏÕ£¬µ«ÊÇÊ¢²ú¸÷ÖÖ¸÷ÑùµÄ±¦Ê¯¡£Èç¹ûÄãÔ¸ÒâÍ¶×Ê100000½ğ±ÒµÄ»°£¬Ã»ÓĞÒâÍâµÄ»°£¬15Ììºó¾Í¿ÉÒÔ»ñµÃ°Ù·ÖÖ®°ËÊ®µÄÊÕÒæ£¬»¹ÓĞ»ú»áµÃµ½Ò»Ğ©ÖÊÁ¿ÉÏ³ËµÄ±¦Ê¯ºÍÕä¹óµÄ½ğÊô¡£~
+IF~~THEN BEGIN InvestmentChoice2				//æŠ•èµ„ä»‹ç»2å¼€çŸ¿
+SAY @22
 IF~~THEN GOTO InvestmentChoice
 END
 
-IF~~THEN BEGIN InvestmentChoice					//Ñ¡ÔñÍ¶×Ê
-SAY~ÄãÏëÑ¡ÔñÄÄÏîÍ¶×Ê£¿Ò»´ÎÖ»ÄÜÑ¡ÔñÒ»Ïî¡£~
-IF~~THEN REPLY~ÎÒÏëÍ¶×ÊÃ³Ò×¡£~ GOTO InvestTrade
-IF~~THEN REPLY~ÎÒÏëÍ¶×Ê²É¿ó¡£~GOTO Mining
-IF~~THEN REPLY~»¹ÊÇËãÁË£¬ÔÙ¼û¡£~EXIT
+IF~~THEN BEGIN InvestmentChoice					//é€‰æ‹©æŠ•èµ„
+SAY @23
+IF~~THEN REPLY @24 GOTO InvestTrade
+IF~~THEN REPLY @25 GOTO Mining
+IF~~THEN REPLY @26 EXIT
 END
 
-IF~~THEN BEGIN InvestTrade					//Í¶×ÊÃ³Ò×
-SAY~ÄãÒªÍ¶×ÊÓëÂí×ÈÌá¿¨µÄÃ³Ò×Âğ£¿Ì«ºÃÁË£¬Ò»¹²ÊÇ100000½ğ±Ò¡£ÇëÔÚ10ÌìºóÀ´²éÑ¯ÄãµÄÊÕÒæ¡£~
-IF~!PartyGoldGT(99999)~THEN REPLY~µÈÎÒ´Õ¹»ÁËÇ®ÔÙÀ´¡£~EXIT
-IF~PartyGoldGT(99999)~THEN REPLY ~ÕâÀïÊÇ100000½ğ±Ò£¬ÎÒÊ®ÌìºóÔÙÀ´¡£~
+IF~~THEN BEGIN InvestTrade					//æŠ•èµ„è´¸æ˜“
+SAY @27
+IF~!PartyGoldGT(99999)~THEN REPLY @28 EXIT
+IF~PartyGoldGT(99999)~THEN REPLY @29
 	DO ~	TakePartyGold(100000)
 		DestroyGold(100000) 
 		SetGlobal("T#InvestedTrade","GLOBAL",1)
 		SetGlobalTimer("T#TradeTimer","GLOBAL",TEN_DAYS)~EXIT
-IF~~THEN REPLY~»¹ÊÇËãÁË¡£~EXIT
+IF~~THEN REPLY @30 EXIT
 END
 
-	//Í¶×ÊÃ³Ò×ÊÕÒæ
+	//æŠ•èµ„è´¸æ˜“æ”¶ç›Š
 
-IF~~THEN BEGIN NoTradeEarnings	//ÔİÊ±Ã»ÓĞÊÕÒæ
-SAY~ºÜÒÅº¶£¬ÏÖÔÚÃ³Ò×´¬¶Ó»¹Î´»Ø¸Û£¬ÄãĞèÒª10Ìì²ÅÄÜÁìÈ¡ÄãµÄÊÕÒæ¡£~
-IF~~THEN REPLY~ºÃµÄ£¬ÎÒÒÔºóÔÙÀ´¡£~EXIT
+IF~~THEN BEGIN NoTradeEarnings	//æš‚æ—¶æ²¡æœ‰æ”¶ç›Š
+SAY @31
+IF~~THEN REPLY @20 EXIT
 END
 
-IF~~THEN BEGIN TradeSuccesed 	//Ã³Ò×³É¹¦
-SAY~¹§Ï²Äã£¬´¬¶ÓË³Àû»Ø¸ÛÁË¡£ÕâÊÇÄãµÄ±¾½ğºÍÊÕÈë£¬Ò»¹²150000½ğ±Ò¡£~
-IF~~THEN REPLY~Ğ»Ğ»£¬Õâ±ÊÂòÂôÕæ²»´í¡£~DO~GiveGoldForce(150000) 
+IF~~THEN BEGIN TradeSuccesed 	//è´¸æ˜“æˆåŠŸ
+SAY @32
+IF~~THEN REPLY @33 DO~GiveGoldForce(150000) 
 					SetGlobal("T#InvestedTrade","GLOBAL",0)
 					SetGlobal("T#Invsucc1","AR0707",0)~EXIT
 END
 
-IF~~THEN BEGIN TradeFailure//Ã³Ò×Ê§°Ü
-SAY~ºÜÒÅº¶£¬´¬¶ÓÓöµ½ÁË±©·çÓê³ÁÃ»ÁË£¬±¾´ÎÍ¶×ÊÊ§°Ü¡£~
-IF~~THEN REPLY~ÎÒµÄÌì£¬Ì«Ôã¸âÁË¡£µ«ÊÇÒ²Ã»ÓĞ°ì·¨£¬ÖØĞÂÀ´°É¡£~
+IF~~THEN BEGIN TradeFailure//è´¸æ˜“å¤±è´¥
+SAY @34
+IF~~THEN REPLY @35 
 DO~	SetGlobal("T#InvestedTrade","GLOBAL",0)
 	SetGlobal("T#Invsucc1","AR0707",0)~EXIT
 END
 
-IF~~THEN BEGIN Mining						//Í¶×Ê²É¿ó	
-SAY~ÄãÒªÍ¶×Ê¾ŞÄ§É­ÁÖµÄ¿ó²úÃ´£¬°ô¼«ÁË¡£~
-IF~!PartyGoldGT(99999)~THEN REPLY~µÈÎÒ´Õ¹»ÁËÇ®ÔÙÀ´¡£~EXIT
-IF~PartyGoldGT(99999)~THEN REPLY ~ÕâÀïÊÇ100000½ğ±Ò£¬ÎÒÊ®ÎåÌìºóÔÙÀ´¡£~
+IF~~THEN BEGIN Mining						//æŠ•èµ„é‡‡çŸ¿	
+SAY @36
+IF~!PartyGoldGT(99999)~THEN REPLY @28 EXIT
+IF~PartyGoldGT(99999)~THEN REPLY @29
 	DO ~	TakePartyGold(100000)
 		DestroyGold(100000) 
 		SetGlobal("T#InvestedMining","GLOBAL",1)
 		SetGlobalTimer("T#MiningTimer","GLOBAL",ONE_DAY)~EXIT
-IF~~THEN REPLY~»¹ÊÇËãÁË¡£~EXIT
+IF~~THEN REPLY @30 EXIT
 END
 
-	//Í¶×Ê²É¿óÊÕÒæ
+	//æŠ•èµ„é‡‡çŸ¿æ”¶ç›Š
 
-IF~~THEN BEGIN NoMiningEarnings					//ÔİÊ±Ã»ÓĞÊÕÒæ
-SAY~ºÜÒÅº¶£¬ÏÖÔÚ¿óÉÏ»¹Ã»´«À´ÏûÏ¢£¬ÄãĞèÒª15Ìì²ÅÄÜÁìÈ¡ÊÕÒæ¡£~
-IF~~THEN REPLY~ºÃµÄ£¬ÎÒÒÔºóÔÙÀ´¡£~EXIT
+IF~~THEN BEGIN NoMiningEarnings					//æš‚æ—¶æ²¡æœ‰æ”¶ç›Š
+SAY @37
+IF~~THEN REPLY @20 EXIT
 END
 
-IF~~THEN BEGIN MiningSuccesed 					//²É¿ó³É¹¦
-SAY~Õâ¶ÎÊ±¼ä¿ó¾®ÔË×÷ºÜÕı³££¬ÄãµÄÊÕÒæ£¬Ò»¹²180000½ğ±Ò£¬ÕâÕæÊÇÒ»´ó±ÊÇ®°¡¡£~
-IF~~THEN REPLY~Ğ»Ğ»£¬Ì«ºÃÁË¡£~DO~GiveGoldForce(180000) 
+IF~~THEN BEGIN MiningSuccesed 					//é‡‡çŸ¿æˆåŠŸ
+SAY @38
+IF~~THEN REPLY @39 DO~GiveGoldForce(180000) 
 					SetGlobal("T#InvestedMining","GLOBAL",0)
 					SetGlobal("T#Invsucc2","AR0707",0)~EXIT
 END
 
-IF~~THEN BEGIN MiningSuccesed1					//²É¿ó³É¹¦£¬¶à±¦Ê¯
-SAY~Õâ¶ÎÊ±¼ä¿ó¾®ÔË×÷ºÜÕı³££¬ÄãµÄÊÕÒæ£¬Ò»¹²180000½ğ±Ò£¬ÕâÕæÊÇÒ»´ó±ÊÇ®°¡¡£~
-IF~~THEN REPLY~Ğ»Ğ»£¬Ì«ºÃÁË¡£~DO~GiveGoldForce(180000) 
+IF~~THEN BEGIN MiningSuccesed1					//é‡‡çŸ¿æˆåŠŸï¼Œå¤šå®çŸ³
+SAY @40 
+IF~~THEN REPLY @39 DO~GiveGoldForce(180000) 
 				 GiveItemCreate("misc45",Player1,2,1,1)
 				 GiveItemCreate("T#Mithra",Player1,2,1,1)
 					SetGlobal("T#InvestedMining","GLOBAL",0)
 					SetGlobal("T#Invsucc2","AR0707",0)~EXIT
 END
 
-IF~~THEN BEGIN MiningSuccesed2					//²É¿ó³É¹¦£¬ÉÙ±¦Ê¯
-SAY~Õâ¶ÎÊ±¼ä¿ó¾®ÔË×÷ºÜÕı³££¬ÄãµÄÊÕÒæ£¬Ò»¹²180000½ğ±Ò£¬ÕâÕæÊÇÒ»´ó±ÊÇ®°¡¡£~
-IF~~THEN REPLY~Ğ»Ğ»£¬Ì«ºÃÁË¡£~DO~GiveGoldForce(180000) 
+IF~~THEN BEGIN MiningSuccesed2					//é‡‡çŸ¿æˆåŠŸï¼Œå°‘å®çŸ³
+SAY @40 
+IF~~THEN REPLY @39 DO~GiveGoldForce(180000) 
 				 GiveItemCreate("misc45",Player1,1,1,1)
 				 GiveItemCreate("T#Mithra",Player1,1,1,1)
 					SetGlobal("T#InvestedMining","GLOBAL",0)
 					SetGlobal("T#Invsucc2","AR0707",0)~EXIT
 END
 
-IF~~THEN BEGIN MiningFailure					//²É¿óÊ§°Ü
-SAY~ºÜÒÅº¶£¬¿ó¾®±»¹ÖÎïÏ®»÷ÁË£¬ºÜ¶à¿ó¹¤ÓöÄÑÁË¡£~
-IF~~THEN REPLY~ÎÒµÄÌì£¬Ì«Ôã¸âÁË¡£µ«ÊÇÒ²Ã»ÓĞ°ì·¨£¬ÖØĞÂÀ´°É¡£~
+IF~~THEN BEGIN MiningFailure					//é‡‡çŸ¿å¤±è´¥
+SAY @41
+IF~~THEN REPLY @35 
 DO~	SetGlobal("T#InvestedMining","GLOBAL",0)
 	SetGlobal("T#Invsucc2","AR0707",0)~EXIT
 END
 
-IF~~THEN BEGIN Loan						//´û¿î
-SAY~¶Ô²»Æğ£¬±¾ÒøĞĞ´û¿îÒµÎñÄ¿Ç°»¹Î´¿ªÆô¡£~
-IF~~THEN REPLY~Å¶£¬ÔÙ¼û¡£~EXIT
+IF~~THEN BEGIN Loan						//è´·æ¬¾
+SAY @42
+IF~~THEN REPLY @43 EXIT
 END

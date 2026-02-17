@@ -1,7 +1,7 @@
 IF
-Global("T#JSRainExists","AR8015",0)
+Global("T#JSRainExists","%SWBaldursGate_PotionsStore2%",0)
 THEN
 RESPONSE #100
-SetGlobal("T#JSRainExists","AR8015",1)
+SetGlobal("T#JSRainExists","%SWBaldursGate_PotionsStore2%",1)
 CreateCreature("T#JSRain",[480.220],3) 
 END

@@ -6,30 +6,30 @@ SetGlobal("T#ZMluExists","AR0707",1)
 CreateCreature("T#ZMlu",[318.433],3) 
 END
 
-//����T#Invsucc1������ó��Ͷ�ʵĳɹ���ʧ�ܣ�0Ϊδ���������1ΪͶ�ʳɹ���2ΪͶ��ʧ��
+//变量T#Invsucc1，定义贸易投资的成功或失败，0为未算随机数，1为投资成功，2为投资失败
 
 IF
-	Global("T#InvestedTrade","GLOBAL",1)	//���Ͷ����ó��
-	Global("T#Invsucc1","AR0707",0)		//û���������
+	Global("T#InvestedTrade","GLOBAL",1)	//如果投资了贸易
+	Global("T#Invsucc1","AR0707",0)		//没有算随机数
 THEN
 	RESPONSE #80
-	SetGlobal("T#Invsucc1","AR0707",1)	//80%����Ͷ�ʳɹ�
+	SetGlobal("T#Invsucc1","AR0707",1)	//80%几率投资成功
 	RESPONSE #20
-	SetGlobal("T#Invsucc1","AR0707",2)	//20%����Ͷ��ʧ��
+	SetGlobal("T#Invsucc1","AR0707",2)	//20%几率投资失败
 END
 
-//����T#Invsucc2������ɿ�Ͷ�ʵĳɹ���ʧ�ܣ�0Ϊδ���������1ΪͶ�ʳɹ���2ΪͶ��ʧ�ܣ�3Ϊ2����ʯ2����4Ϊ1����ʯ1����
+//变量T#Invsucc2，定义采矿投资的成功或失败，0为未算随机数，1为投资成功，2为投资失败，3为2个宝石2个矿，4为1个宝石1个矿
 
 IF
-	Global("T#InvestedMining","GLOBAL",1)	//���Ͷ���˲ɿ�
-	Global("T#Invsucc2","AR0707",0)		//û���������
+	Global("T#InvestedMining","GLOBAL",1)	//如果投资了采矿
+	Global("T#Invsucc2","AR0707",0)		//没有算随机数
 THEN	
 	RESPONSE #30
-	SetGlobal("T#Invsucc2","AR0707",3)	//30%����Ͷ�ʳɹ����౦ʯ
+	SetGlobal("T#Invsucc2","AR0707",3)	//30%几率投资成功，多宝石
 	RESPONSE #30
-	SetGlobal("T#Invsucc2","AR0707",4)	//70%����Ͷ�ʳɹ����ٱ�ʯ
+	SetGlobal("T#Invsucc2","AR0707",4)	//70%几率投资成功，少宝石
 	RESPONSE #10
-	SetGlobal("T#Invsucc2","AR0707",1)	//70%����Ͷ�ʳɹ�
+	SetGlobal("T#Invsucc2","AR0707",1)	//70%几率投资成功
 	RESPONSE #30
-	SetGlobal("T#Invsucc2","AR0707",2)	//30%����Ͷ��ʧ��
+	SetGlobal("T#Invsucc2","AR0707",2)	//30%几率投资失败
 END
